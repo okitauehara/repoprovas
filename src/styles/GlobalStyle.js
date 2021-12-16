@@ -21,7 +21,8 @@ time, mark, audio, video {
   padding: 0;
   border: 0;
   font-size: 100%;
-  font: inherit;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 400;
   vertical-align: baseline;
   text-decoration: none
 }
@@ -32,18 +33,22 @@ footer, hgroup, menu, nav, section {
 }
 body {
   line-height: 1;
-  background-color: #ECF0F1;
-  color: #000000;
+  background-color: #181820;
+  color: #FFFFFF;
   font-family: 'Roboto', sans-serif;
-  font-weight: 700;
-  &::-webkit-scrollbar {
-    width: 0px;
-  }
+  font-weight: 400;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 button {
+  font-family: 'Roboto', sans-serif;
+  font-weight: 400;
   box-shadow: 3px 3px 10px 0px rgba(0, 0, 0, 0.75);
-  &:active {
-    filter: brightness(1.1);
+  &:hover {
+    filter: brightness(0.7);
+    cursor: pointer;
   }
 }
 ol, ul {
