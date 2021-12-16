@@ -21,6 +21,14 @@ function NewExam() {
   const insertExam = (e) => {
     e.preventDefault();
     setIsDisabled(true);
+    const body = {
+      period: `${data.year}.${data.semester}`,
+      category: data.category,
+      subject: data.subject,
+      professor: data.professor,
+      link: data.link,
+    };
+    console.log(body);
   };
 
   return (
@@ -73,12 +81,12 @@ function NewExam() {
           onChange={handleChange}
           defaultValue=""
         >
-          <Option>Período</Option>
-          <Option value="P1">P1</Option>
-          <Option value="P2">P2</Option>
-          <Option value="P3">P3</Option>
-          <Option value="2C">2ª Chamada</Option>
-          <Option value="Outros">Outras</Option>
+          <Option value="">Categoria</Option>
+          <Option>P1</Option>
+          <Option>P2</Option>
+          <Option>P3</Option>
+          <Option>2ª Chamada</Option>
+          <Option>Outras</Option>
         </Select>
         <Select
           name="subject"
@@ -87,12 +95,12 @@ function NewExam() {
           onChange={handleChange}
           defaultValue=""
         >
-          <Option>Disciplina</Option>
-          <Option value="Disciplina A">Disciplina A</Option>
-          <Option value="Disciplina B">Disciplina B</Option>
-          <Option value="Disciplina C">Disciplina C</Option>
-          <Option value="Disciplina D">Disciplina D</Option>
-          <Option value="Disciplina E">Disciplina E</Option>
+          <Option value="">Disciplina</Option>
+          <Option>Disciplina A</Option>
+          <Option>Disciplina B</Option>
+          <Option>Disciplina C</Option>
+          <Option>Disciplina D</Option>
+          <Option>Disciplina E</Option>
         </Select>
         <Select
           name="professor"
@@ -101,12 +109,12 @@ function NewExam() {
           onChange={handleChange}
           defaultValue=""
         >
-          <Option>Professor</Option>
-          <Option value="Professor A">Professor A</Option>
-          <Option value="Professor B">Professor B</Option>
-          <Option value="Professor C">Professor C</Option>
-          <Option value="Professor D">Professor D</Option>
-          <Option value="Professor E">Professor E</Option>
+          <Option value="">Professor</Option>
+          <Option>Professor A</Option>
+          <Option>Professor B</Option>
+          <Option>Professor C</Option>
+          <Option>Professor D</Option>
+          <Option>Professor E</Option>
         </Select>
         <Input
           name="link"
@@ -144,11 +152,13 @@ const RadioOption = styled.div`
   align-items: center;
 `;
 
-const Option = styled.option``;
+const Option = styled.option`
+  height: 40px;
+`;
 
 const Input = styled.input`
   width: 100%;
-  height: 30px;
+  height: 40px;
   margin: 10px 0px;
   outline: none;
 `;
@@ -161,7 +171,7 @@ const RadioInput = styled.input`
 
 const Select = styled.select`
   width: 100%;
-  height: 30px;
+  height: 40px;
   margin: 10px 0px;
   outline: none;
 `;
