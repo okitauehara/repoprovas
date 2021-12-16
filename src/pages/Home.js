@@ -1,6 +1,10 @@
+import { DefaultContent, CenterPage } from '../styles/DefaultPageStyle';
+
 function Home() {
   return (
-    <h1>Home</h1>
+    <CenterPage>
+      <DefaultContent />
+    </CenterPage>
   );
 }
 
