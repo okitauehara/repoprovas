@@ -1,4 +1,25 @@
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
+import LogoImg from '../assets/logo.png';
+
+function DefaultContent() {
+  return (
+    <>
+      <Logo src={LogoImg} />
+      <Link to="/new-exam" style={{ width: '100%' }}>
+        <Button>Novo Exame</Button>
+      </Link>
+      <Buttons>
+        <Link to="/by-subject">
+          <Button>Por disciplina</Button>
+        </Link>
+        <Link to="/by-professor">
+          <Button>Por professor</Button>
+        </Link>
+      </Buttons>
+    </>
+  );
+}
 
 const CenterPage = styled.section`
   display: flex;
@@ -35,6 +56,7 @@ const Button = styled.button`
 `;
 
 export {
+  DefaultContent,
   CenterPage,
   Logo,
   Buttons,
