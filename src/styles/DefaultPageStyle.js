@@ -5,7 +5,9 @@ import LogoImg from '../assets/logo.png';
 function DefaultContent() {
   return (
     <>
-      <Logo src={LogoImg} />
+      <Link to="/">
+        <Logo src={LogoImg} />
+      </Link>
       <Link to="/new-exam" style={{ width: '100%' }}>
         <Button>Novo Exame</Button>
       </Link>
