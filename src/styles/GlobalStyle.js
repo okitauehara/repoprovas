@@ -45,9 +45,9 @@ body {
 button {
   font-family: 'Roboto', sans-serif;
   font-weight: 400;
-  box-shadow: 3px 3px 10px 0px rgba(0, 0, 0, 0.75);
+  box-shadow: 3px 3px 10px 0px rgba(252, 84, 157, 0.75);
   &:hover {
-    filter: brightness(0.7);
+    filter: brightness(0.8);
     cursor: pointer;
   }
 }

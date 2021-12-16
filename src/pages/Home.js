@@ -21,7 +21,6 @@ function Home() {
 export default Home;
 
 const CenterPage = styled.section`
-  height: calc(100vh - 50px);
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -31,7 +30,7 @@ const CenterPage = styled.section`
 const Logo = styled.img`
   width: 60vw;
   max-width: 600px;
-  margin-bottom: 50px;
+  margin: 50px 0px;
 `;
 
 const Buttons = styled.div`
