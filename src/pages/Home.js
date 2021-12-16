@@ -1,54 +1,24 @@
-import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import LogoImg from '../assets/logo.png';
+import * as S from '../styles/DefaultPageStyle';
 
 function Home() {
   return (
-    <CenterPage>
-      <Logo src={LogoImg} />
-      <Buttons>
-        <Link to="/new-exam">
-          <Button>Nova Prova</Button>
+    <S.CenterPage>
+      <S.Logo src={LogoImg} />
+      <Link to="/new-exam" style={{ width: '100%' }}>
+        <S.Button>Novo Exame</S.Button>
+      </Link>
+      <S.Buttons>
+        <Link to="/by-subject">
+          <S.Button>Listar por disciplina</S.Button>
         </Link>
-        <Link to="/list-exams">
-          <Button>Visualizar Provas</Button>
+        <Link to="/by-professor">
+          <S.Button>Listar por professor</S.Button>
         </Link>
-      </Buttons>
-    </CenterPage>
+      </S.Buttons>
+    </S.CenterPage>
   );
 }
 
 export default Home;
-
-const CenterPage = styled.section`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-`;
-
-const Logo = styled.img`
-  width: 60vw;
-  max-width: 600px;
-  margin: 50px 0px;
-`;
-
-const Buttons = styled.div`
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  column-gap: 20px;
-  width: 60vw;
-  max-width: 600px;
-`;
-
-const Button = styled.button`
-  width: 100%;
-  height: 40px;
-  border: none;
-  outline: none;
-  border-radius: 5px;
-  background-color: #FC449C;
-  font-weight: 700;
-  font-size: 20px;
-  color: #FFFFFF;
-`;
