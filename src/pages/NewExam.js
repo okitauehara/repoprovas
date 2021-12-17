@@ -1,6 +1,7 @@
 import styled from 'styled-components';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { DefaultContent, CenterPage } from '../styles/DefaultPageStyle';
+import { getCategories, getSubjects, getProfessors } from '../services/API';
 
 function NewExam() {
   const [data, setData] = useState({
@@ -12,7 +13,21 @@ function NewExam() {
     link: '',
   });
   const [isDisabled, setIsDisabled] = useState(false);
+  const [categories, setCategories] = useState([]);
+  const [subjects, setSubjects] = useState([]);
+  const [professors, setProfessors] = useState([]);
   const currentYear = new Date().getFullYear();
+
+  useEffect(() => {
+    getCategories()
+      .then((res) => setCategories(res.data));
+    getSubjects()
+      .then((res) => setSubjects(res.data));
+    if (data.subject) {
+      getProfessors(data.subject)
+        .then((res) => setProfessors(res.data));
+    }
+  }, [data.subject]);
 
   const handleChange = (event) => {
     setData({ ...data, [event.target.name]: event.target.value });
@@ -24,7 +39,7 @@ function NewExam() {
     const body = {
       period: `${data.year}.${data.semester}`,
       category: data.category,
-      subject: data.subject,
+      subject: Number(data.subject),
       professor: data.professor,
       link: data.link,
     };
@@ -82,11 +97,9 @@ function NewExam() {
           defaultValue=""
         >
           <Option value="">Categoria</Option>
-          <Option>P1</Option>
-          <Option>P2</Option>
-          <Option>P3</Option>
-          <Option>Segunda Chamada</Option>
-          <Option>Outras</Option>
+          {categories.map((category) => (
+            <Option key={category.id}>{category.category}</Option>
+          ))}
         </Select>
         <Select
           name="subject"
@@ -96,11 +109,9 @@ function NewExam() {
           defaultValue=""
         >
           <Option value="">Disciplina</Option>
-          <Option>Disciplina A</Option>
-          <Option>Disciplina B</Option>
-          <Option>Disciplina C</Option>
-          <Option>Disciplina D</Option>
-          <Option>Disciplina E</Option>
+          {subjects.map((subject) => (
+            <Option key={subject.id} value={subject.id}>{subject.subject}</Option>
+          ))}
         </Select>
         <Select
           name="professor"
@@ -110,11 +121,9 @@ function NewExam() {
           defaultValue=""
         >
           <Option value="">Professor</Option>
-          <Option>Professor A</Option>
-          <Option>Professor B</Option>
-          <Option>Professor C</Option>
-          <Option>Professor D</Option>
-          <Option>Professor E</Option>
+          {professors?.map((professor) => (
+            <Option key={professor.id}>{professor.professor}</Option>
+          ))}
         </Select>
         <Input
           name="link"
