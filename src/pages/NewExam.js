@@ -85,7 +85,7 @@ function NewExam() {
           <Option>P1</Option>
           <Option>P2</Option>
           <Option>P3</Option>
-          <Option>2ª Chamada</Option>
+          <Option>Segunda Chamada</Option>
           <Option>Outras</Option>
         </Select>
         <Select
