@@ -22,9 +22,15 @@ function postExam(body) {
   return promise;
 }
 
+function getSubjectsByPeriod() {
+  const promise = axios.get(`${URL_BASE}/subjects/by-period`);
+  return promise;
+}
+
 export {
   getCategories,
   getSubjects,
   getProfessors,
   postExam,
+  getSubjectsByPeriod,
 };
