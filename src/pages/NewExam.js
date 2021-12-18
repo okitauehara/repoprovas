@@ -10,12 +10,12 @@ function NewExam() {
     category: '',
     subject: '',
     professor: '',
-    link: '',
+    url: '',
   });
   const [isDisabled, setIsDisabled] = useState(false);
   const [categories, setCategories] = useState([]);
   const [subjects, setSubjects] = useState([]);
-  const [professors, setProfessors] = useState([]);
+  const [professors, setProfessors] = useState('');
   const currentYear = new Date().getFullYear();
 
   useEffect(() => {
@@ -37,11 +37,11 @@ function NewExam() {
     e.preventDefault();
     setIsDisabled(true);
     const body = {
-      period: `${data.year}.${data.semester}`,
-      category: data.category,
+      name: `${data.year}.${data.semester}`,
+      category: Number(data.category),
       subject: Number(data.subject),
-      professor: data.professor,
-      link: data.link,
+      professor: Number(data.professor),
+      url: data.url,
     };
     console.log(body);
   };
@@ -98,7 +98,7 @@ function NewExam() {
         >
           <Option value="">Categoria</Option>
           {categories.map((category) => (
-            <Option key={category.id}>{category.category}</Option>
+            <Option key={category.id} value={category.id}>{category.category}</Option>
           ))}
         </Select>
         <Select
@@ -121,8 +121,8 @@ function NewExam() {
           defaultValue=""
         >
           <Option value="">Professor</Option>
-          {professors?.map((professor) => (
-            <Option key={professor.id}>{professor.professor}</Option>
+          {professors.professors?.map((professor) => (
+            <Option key={professor.id} value={professor.id}>{professor.professor}</Option>
           ))}
         </Select>
         <Input

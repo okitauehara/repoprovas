@@ -17,8 +17,14 @@ function getProfessors(subjectId) {
   return promise;
 }
 
+function postExam(body) {
+  const promise = axios.post(`${URL_BASE}/exams`, body);
+  return promise;
+}
+
 export {
   getCategories,
   getSubjects,
   getProfessors,
+  postExam,
 };
