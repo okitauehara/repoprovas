@@ -1,5 +1,7 @@
+/* eslint-disable max-len */
 import { useEffect, useState } from 'react';
 import styled from 'styled-components';
+import ReactTooltip from 'react-tooltip';
 import { getSubjectsByPeriod } from '../services/API';
 import { DefaultContent, CenterPage } from '../styles/DefaultPageStyle';
 
@@ -22,7 +24,17 @@ function ListBySubject() {
           <Period>
             <PeriodName key={period.id}>{period.period}</PeriodName>
             {period.subjects?.map((subject) => (
-              <Subject key={subject.id}>{subject.subject}</Subject>
+              <>
+                <Subject key={subject.id} data-tip={`Quantidade: ${subject.exams.length}`}>{subject.subject}</Subject>
+                <ReactTooltip
+                  place="right"
+                  type="dark"
+                  backgroundColor="#181820"
+                  textColor="#FFEAA4"
+                  effect="solid"
+                />
+
+              </>
             ))}
           </Period>
         ))}
