@@ -25,6 +25,7 @@ time, mark, audio, video {
   font-weight: 400;
   vertical-align: baseline;
   text-decoration: none
+  cursor: default;
 }
 /* HTML5 display-role reset for older browsers */
 article, aside, details, figcaption, figure, 
@@ -33,7 +34,7 @@ footer, hgroup, menu, nav, section {
 }
 body {
   line-height: 1;
-  background-color: #181820;
+  background-color: #2C214D;
   color: #FFFFFF;
   font-family: 'Roboto', sans-serif;
   font-weight: 400;
