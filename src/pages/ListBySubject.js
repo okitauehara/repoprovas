@@ -1,6 +1,10 @@
+import { DefaultContent, CenterPage } from '../styles/DefaultPageStyle';
+
 function ListBySubject() {
   return (
-    <h1>ListBySubject</h1>
+    <CenterPage>
+      <DefaultContent />
+    </CenterPage>
   );
 }
 
