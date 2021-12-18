@@ -1,7 +1,11 @@
 import styled from 'styled-components';
+import Swal from 'sweetalert2';
 import { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { DefaultContent, CenterPage } from '../styles/DefaultPageStyle';
-import { getCategories, getSubjects, getProfessors } from '../services/API';
+import {
+  getCategories, getSubjects, getProfessors, postExam,
+} from '../services/API';
 
 function NewExam() {
   const [data, setData] = useState({
@@ -16,6 +20,7 @@ function NewExam() {
   const [categories, setCategories] = useState([]);
   const [subjects, setSubjects] = useState([]);
   const [professors, setProfessors] = useState('');
+  const navigate = useNavigate();
   const currentYear = new Date().getFullYear();
 
   useEffect(() => {
@@ -33,6 +38,34 @@ function NewExam() {
     setData({ ...data, [event.target.name]: event.target.value });
   };
 
+  const handleError = (error) => {
+    if (error.response?.status === 400) {
+      Swal.fire({
+        icon: 'error',
+        title: 'Ops!',
+        text: 'Verifique se os campos foram preenchidos corretamente.',
+      });
+    } else if (error.response?.status === 404) {
+      Swal.fire({
+        icon: 'error',
+        title: 'Ops!',
+        text: 'Parece que a categoria, disciplina ou professor não foram encontrados! Tente novamente.',
+      });
+    } else if (error.response?.status === 409) {
+      Swal.fire({
+        icon: 'error',
+        title: 'Ops!',
+        text: 'Este link já foi registrado!',
+      });
+    } else {
+      Swal.fire({
+        icon: 'error',
+        title: 'Ops!',
+        text: 'Tivemos um erro no servidor, tente novamente mais tarde.',
+      });
+    }
+  };
+
   const insertExam = (e) => {
     e.preventDefault();
     setIsDisabled(true);
@@ -43,7 +76,17 @@ function NewExam() {
       professor: Number(data.professor),
       url: data.url,
     };
-    console.log(body);
+    postExam(body)
+      .then(async () => {
+        await Swal.fire({
+          icon: 'success',
+          title: 'Sucesso!',
+          text: 'Sua prova foi registrada.',
+        });
+        setIsDisabled(false);
+        navigate('/');
+      })
+      .catch((error) => handleError(error));
   };
 
   return (
@@ -126,8 +169,8 @@ function NewExam() {
           ))}
         </Select>
         <Input
-          name="link"
-          value={data.link}
+          name="url"
+          value={data.url}
           placeholder="Link da Prova"
           type="text"
           required
