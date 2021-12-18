@@ -42,6 +42,10 @@ body {
   justify-content: center;
   align-items: center;
 }
+input, input::placeholder, option {
+  font-family: 'Roboto', sans-serif;
+  font-weight: 400;
+}
 button {
   font-family: 'Roboto', sans-serif;
   font-weight: 400;
