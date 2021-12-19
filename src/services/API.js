@@ -32,6 +32,11 @@ function getProfessors() {
   return promise;
 }
 
+function getExamsBySubject(subjectId) {
+  const promise = axios.get(`${URL_BASE}/exams/${subjectId}`);
+  return promise;
+}
+
 export {
   getCategories,
   getSubjects,
@@ -39,4 +44,5 @@ export {
   postExam,
   getSubjectsByPeriod,
   getProfessors,
+  getExamsBySubject,
 };

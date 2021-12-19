@@ -13,8 +13,8 @@ function Pages() {
       <Route path="/new-exam" element={<NewExam />} />
       <Route path="/by-subject" element={<ListBySubject />} />
       <Route path="/by-professor" element={<ListByProfessor />} />
-      <Route path="/by-subject/:examId" element={<ExamBySubject />} />
-      <Route path="/by-professor/:examId" element={<ExamByProfessor />} />
+      <Route path="/by-subject/:subjectId" element={<ExamBySubject />} />
+      <Route path="/by-professor/:professorId" element={<ExamByProfessor />} />
     </Routes>
   );
 }

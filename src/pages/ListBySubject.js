@@ -1,4 +1,5 @@
 /* eslint-disable max-len */
+import { useNavigate } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import ReactTooltip from 'react-tooltip';
@@ -7,6 +8,7 @@ import { DefaultContent, CenterPage } from '../styles/DefaultPageStyle';
 
 function ListBySubject() {
   const [periods, setPeriods] = useState([]);
+  const navigate = useNavigate();
 
   useEffect(() => {
     getSubjectsByPeriod()
@@ -25,7 +27,13 @@ function ListBySubject() {
             <PeriodName key={period.id}>{period.period}</PeriodName>
             {period.subjects?.map((subject) => (
               <>
-                <Subject key={subject.id} data-tip={`Provas: ${subject.exams.length}`}>{subject.subject}</Subject>
+                <Subject
+                  key={subject.id}
+                  data-tip={`Provas: ${subject.exams.length}`}
+                  onClick={() => navigate(`/by-subject/${subject.id}`)}
+                >
+                  {subject.subject}
+                </Subject>
                 <ReactTooltip
                   place="right"
                   type="dark"
