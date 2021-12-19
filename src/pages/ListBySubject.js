@@ -5,6 +5,7 @@ import styled from 'styled-components';
 import ReactTooltip from 'react-tooltip';
 import { getSubjectsByPeriod } from '../services/API';
 import { DefaultContent, CenterPage } from '../styles/DefaultPageStyle';
+import Loading from '../utils/Loading';
 
 function ListBySubject() {
   const [periods, setPeriods] = useState([]);
@@ -21,31 +22,33 @@ function ListBySubject() {
     <CenterPage>
       <DefaultContent />
       <PageTitle>Períodos</PageTitle>
-      <List>
-        {periods?.map((period) => (
-          <Period>
-            <PeriodName key={period.id}>{period.period}</PeriodName>
-            {period.subjects?.map((subject) => (
-              <>
-                <Subject
-                  key={subject.id}
-                  data-tip={`Provas: ${subject.exams.length}`}
-                  onClick={() => navigate(`/by-subject/${subject.id}`)}
-                >
-                  {subject.subject}
-                </Subject>
-                <ReactTooltip
-                  place="right"
-                  type="dark"
-                  backgroundColor="#181820"
-                  textColor="#FFEAA4"
-                  effect="solid"
-                />
-              </>
-            ))}
-          </Period>
-        ))}
-      </List>
+      {periods.length ? (
+        <List>
+          {periods?.map((period) => (
+            <Period>
+              <PeriodName key={period.id}>{period.period}</PeriodName>
+              {period.subjects?.map((subject) => (
+                <>
+                  <Subject
+                    key={subject.id}
+                    data-tip={`Provas: ${subject.exams.length}`}
+                    onClick={() => navigate(`/by-subject/${subject.id}`)}
+                  >
+                    {subject.subject}
+                  </Subject>
+                  <ReactTooltip
+                    place="right"
+                    type="dark"
+                    backgroundColor="#181820"
+                    textColor="#FFEAA4"
+                    effect="solid"
+                  />
+                </>
+              ))}
+            </Period>
+          ))}
+        </List>
+      ) : <Loading />}
     </CenterPage>
   );
 }

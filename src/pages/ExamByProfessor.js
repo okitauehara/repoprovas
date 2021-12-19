@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import { getExamsByProfessor } from '../services/API';
 import { DefaultContent, CenterPage } from '../styles/DefaultPageStyle';
 import formatName from '../utils/formatName';
+import Loading from '../utils/Loading';
 
 function ExamByProfessor() {
   const { professorId } = useParams();
@@ -18,58 +19,60 @@ function ExamByProfessor() {
     <CenterPage>
       <DefaultContent />
       <PageTitle>{categories?.professor}</PageTitle>
-      <Exams>
-        <Category>P1</Category>
-        {categories.p1?.length ? categories.p1?.map((category) => (
-          <Exam
-            href={category.url}
-            target="_blank"
-          >
-            <Name>{formatName(category.name.name)}</Name>
-            <Subject>{category.subject.subject}</Subject>
-          </Exam>
-        )) : 'Nenhuma prova registrada'}
-        <Category>P2</Category>
-        {categories.p2?.length ? categories.p2?.map((category) => (
-          <Exam
-            href={category.url}
-            target="_blank"
-          >
-            <Name>{formatName(category.name.name)}</Name>
-            <Subject>{category.subject.subject}</Subject>
-          </Exam>
-        )) : 'Nenhuma prova registrada'}
-        <Category>P3</Category>
-        {categories.p3?.length ? categories.p3?.map((category) => (
-          <Exam
-            href={category.url}
-            target="_blank"
-          >
-            <Name>{formatName(category.name.name)}</Name>
-            <Subject>{category.subject.subject}</Subject>
-          </Exam>
-        )) : 'Nenhuma prova registrada'}
-        <Category>2ª Chamada</Category>
-        {categories.second?.length ? categories.second?.map((category) => (
-          <Exam
-            href={category.url}
-            target="_blank"
-          >
-            <Name>{formatName(category.name.name)}</Name>
-            <Subject>{category.subject.subject}</Subject>
-          </Exam>
-        )) : 'Nenhuma prova registrada'}
-        <Category>Outras</Category>
-        {categories.others?.length ? categories.others?.map((category) => (
-          <Exam
-            href={category.url}
-            target="_blank"
-          >
-            <Name>{formatName(category.name.name)}</Name>
-            <Subject>{category.subject.subject}</Subject>
-          </Exam>
-        )) : 'Nenhuma prova registrada'}
-      </Exams>
+      {categories ? (
+        <Exams>
+          <Category>P1</Category>
+          {categories.p1?.length ? categories.p1?.map((category) => (
+            <Exam
+              href={category.url}
+              target="_blank"
+            >
+              <Name>{formatName(category.name.name)}</Name>
+              <Subject>{category.subject.subject}</Subject>
+            </Exam>
+          )) : 'Nenhuma prova registrada'}
+          <Category>P2</Category>
+          {categories.p2?.length ? categories.p2?.map((category) => (
+            <Exam
+              href={category.url}
+              target="_blank"
+            >
+              <Name>{formatName(category.name.name)}</Name>
+              <Subject>{category.subject.subject}</Subject>
+            </Exam>
+          )) : 'Nenhuma prova registrada'}
+          <Category>P3</Category>
+          {categories.p3?.length ? categories.p3?.map((category) => (
+            <Exam
+              href={category.url}
+              target="_blank"
+            >
+              <Name>{formatName(category.name.name)}</Name>
+              <Subject>{category.subject.subject}</Subject>
+            </Exam>
+          )) : 'Nenhuma prova registrada'}
+          <Category>2ª Chamada</Category>
+          {categories.second?.length ? categories.second?.map((category) => (
+            <Exam
+              href={category.url}
+              target="_blank"
+            >
+              <Name>{formatName(category.name.name)}</Name>
+              <Subject>{category.subject.subject}</Subject>
+            </Exam>
+          )) : 'Nenhuma prova registrada'}
+          <Category>Outras</Category>
+          {categories.others?.length ? categories.others?.map((category) => (
+            <Exam
+              href={category.url}
+              target="_blank"
+            >
+              <Name>{formatName(category.name.name)}</Name>
+              <Subject>{category.subject.subject}</Subject>
+            </Exam>
+          )) : 'Nenhuma prova registrada'}
+        </Exams>
+      ) : <Loading />}
     </CenterPage>
   );
 }

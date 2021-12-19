@@ -86,6 +86,7 @@ function NewExam() {
           icon: 'success',
           title: 'Sucesso!',
           text: 'Sua prova foi registrada.',
+          confirmButtonColor: '#FC449C',
         });
         setIsDisabled(false);
         navigate('/');

@@ -4,6 +4,7 @@ import ReactTooltip from 'react-tooltip';
 import styled from 'styled-components';
 import { getProfessors } from '../services/API';
 import { DefaultContent, CenterPage } from '../styles/DefaultPageStyle';
+import Loading from '../utils/Loading';
 
 function ListByProfessor() {
   const [professors, setProfessors] = useState([]);
@@ -18,25 +19,27 @@ function ListByProfessor() {
     <CenterPage>
       <DefaultContent />
       <PageTitle>Professores</PageTitle>
-      <Professors>
-        {professors.map((professor) => (
-          <>
-            <Name
-              data-tip={`Provas: ${professor.exams.length}`}
-              onClick={() => navigate(`/by-professor/${professor.id}`)}
-            >
-              {professor.professor}
-            </Name>
-            <ReactTooltip
-              place="right"
-              type="dark"
-              backgroundColor="#181820"
-              textColor="#FFEAA4"
-              effect="solid"
-            />
-          </>
-        ))}
-      </Professors>
+      {professors.length ? (
+        <Professors>
+          {professors.map((professor) => (
+            <>
+              <Name
+                data-tip={`Provas: ${professor.exams.length}`}
+                onClick={() => navigate(`/by-professor/${professor.id}`)}
+              >
+                {professor.professor}
+              </Name>
+              <ReactTooltip
+                place="right"
+                type="dark"
+                backgroundColor="#181820"
+                textColor="#FFEAA4"
+                effect="solid"
+              />
+            </>
+          ))}
+        </Professors>
+      ) : <Loading />}
     </CenterPage>
   );
 }
