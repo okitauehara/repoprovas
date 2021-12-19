@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { DefaultContent, CenterPage } from '../styles/DefaultPageStyle';
 import {
-  getCategories, getSubjects, getProfessors, postExam,
+  getCategories, getSubjects, getProfessorsBySubjectId, postExam,
 } from '../services/API';
 
 function NewExam() {
@@ -29,7 +29,7 @@ function NewExam() {
     getSubjects()
       .then((res) => setSubjects(res.data));
     if (data.subject) {
-      getProfessors(data.subject)
+      getProfessorsBySubjectId(data.subject)
         .then((res) => setProfessors(res.data));
     }
   }, [data.subject]);

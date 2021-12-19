@@ -12,7 +12,7 @@ function getSubjects() {
   return promise;
 }
 
-function getProfessors(subjectId) {
+function getProfessorsBySubjectId(subjectId) {
   const promise = axios.get(`${URL_BASE}/professors/${subjectId}`);
   return promise;
 }
@@ -27,10 +27,16 @@ function getSubjectsByPeriod() {
   return promise;
 }
 
+function getProfessors() {
+  const promise = axios.get(`${URL_BASE}/professors`);
+  return promise;
+}
+
 export {
   getCategories,
   getSubjects,
-  getProfessors,
+  getProfessorsBySubjectId,
   postExam,
   getSubjectsByPeriod,
+  getProfessors,
 };
