@@ -45,24 +45,28 @@ function NewExam() {
         title: 'Ops!',
         text: 'Verifique se os campos foram preenchidos corretamente.',
       });
+      setIsDisabled(false);
     } else if (error.response?.status === 404) {
       Swal.fire({
         icon: 'error',
         title: 'Ops!',
         text: 'Parece que a categoria, disciplina ou professor não foram encontrados! Tente novamente.',
       });
+      setIsDisabled(false);
     } else if (error.response?.status === 409) {
       Swal.fire({
         icon: 'error',
         title: 'Ops!',
         text: 'Este link já foi registrado!',
       });
+      setIsDisabled(false);
     } else {
       Swal.fire({
         icon: 'error',
         title: 'Ops!',
         text: 'Tivemos um erro no servidor, tente novamente mais tarde.',
       });
+      setIsDisabled(false);
     }
   };
 
@@ -82,6 +86,7 @@ function NewExam() {
           icon: 'success',
           title: 'Sucesso!',
           text: 'Sua prova foi registrada.',
+          confirmButtonColor: '#FC449C',
         });
         setIsDisabled(false);
         navigate('/');

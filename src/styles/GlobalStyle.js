@@ -4,6 +4,11 @@ const GlobalStyle = createGlobalStyle`
 * {
   box-sizing: border-box
 }
+h1, h2, h3, h4, h5, h6 {
+  &:hover {
+    cursor: default;
+  }
+}
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
@@ -24,8 +29,7 @@ time, mark, audio, video {
   font-family: 'Roboto', sans-serif;
   font-weight: 400;
   vertical-align: baseline;
-  text-decoration: none
-  cursor: default;
+  text-decoration: none;
 }
 /* HTML5 display-role reset for older browsers */
 article, aside, details, figcaption, figure, 
