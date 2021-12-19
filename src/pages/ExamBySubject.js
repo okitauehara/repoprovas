@@ -123,9 +123,13 @@ const Exam = styled.a`
 const Name = styled.p`
   font-size: 16px;
   color: #ffffff;
+  display: flex;
+  justify-content: flex-end;
 `;
 
 const Professor = styled.p`
   font-size: 16px;
   color: #ffffff;
+  display: flex;
+  justify-content: flex-start;
 `;
