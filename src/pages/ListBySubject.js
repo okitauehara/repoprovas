@@ -25,7 +25,7 @@ function ListBySubject() {
             <PeriodName key={period.id}>{period.period}</PeriodName>
             {period.subjects?.map((subject) => (
               <>
-                <Subject key={subject.id} data-tip={`Quantidade: ${subject.exams.length}`}>{subject.subject}</Subject>
+                <Subject key={subject.id} data-tip={`Provas: ${subject.exams.length}`}>{subject.subject}</Subject>
                 <ReactTooltip
                   place="right"
                   type="dark"
@@ -33,7 +33,6 @@ function ListBySubject() {
                   textColor="#FFEAA4"
                   effect="solid"
                 />
-
               </>
             ))}
           </Period>
