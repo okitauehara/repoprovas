@@ -1,3 +1,4 @@
+import { useNavigate } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import ReactTooltip from 'react-tooltip';
 import styled from 'styled-components';
@@ -6,6 +7,7 @@ import { DefaultContent, CenterPage } from '../styles/DefaultPageStyle';
 
 function ListByProfessor() {
   const [professors, setProfessors] = useState([]);
+  const navigate = useNavigate();
 
   useEffect(() => {
     getProfessors()
@@ -19,7 +21,12 @@ function ListByProfessor() {
       <Professors>
         {professors.map((professor) => (
           <>
-            <Name data-tip={`Provas: ${professor.exams.length}`}>{professor.professor}</Name>
+            <Name
+              data-tip={`Provas: ${professor.exams.length}`}
+              onClick={() => navigate(`/by-professor/${professor.id}`)}
+            >
+              {professor.professor}
+            </Name>
             <ReactTooltip
               place="right"
               type="dark"
