@@ -33,7 +33,7 @@ const CenterPage = styled.section`
 const Logo = styled.img`
   width: 60vw;
   max-width: 600px;
-  margin: 50px 0px;
+  margin-bottom: 50px;
 `;
 
 const Buttons = styled.div`
