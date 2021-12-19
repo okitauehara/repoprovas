@@ -1,6 +1,10 @@
+import { DefaultContent, CenterPage } from '../styles/DefaultPageStyle';
+
 function ListByProfessor() {
   return (
-    <h1>ListByProfessor</h1>
+    <CenterPage>
+      <DefaultContent />
+    </CenterPage>
   );
 }
 
