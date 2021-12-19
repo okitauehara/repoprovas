@@ -24,8 +24,11 @@ time, mark, audio, video {
   font-family: 'Roboto', sans-serif;
   font-weight: 400;
   vertical-align: baseline;
-  text-decoration: none
-  cursor: default;
+  text-decoration: none;
+
+  &:hover {
+    cursor: default;
+  }
 }
 /* HTML5 display-role reset for older browsers */
 article, aside, details, figcaption, figure, 
